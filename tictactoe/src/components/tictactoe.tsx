@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -11,7 +11,7 @@ const TicTacToe = () => {
   ];
 
   const checkWinner = (currentBoard) => {
-    for (let pattern of patterns) {
+    for ( const pattern of patterns) {
       const [a, b, c] = pattern;
       if (currentBoard[a] && currentBoard[a] === currentBoard[b] && currentBoard[a] === currentBoard[c]) {
         return currentBoard[a];
