@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 const TicTacToe = () => {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [xTurn, setXTurn] = useState(true);
+  const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
+  const [xTurn, setXTurn] = useState<boolean>(true);
 
   const patterns = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -10,7 +10,7 @@ const TicTacToe = () => {
     [0, 4, 8], [2, 4, 6]             // Diagonals
   ];
 
-  const checkWinner = (currentBoard) => {
+  const checkWinner = (currentBoard: (string | null)[]) => {
     for ( const pattern of patterns) {
       const [a, b, c] = pattern;
       if (currentBoard[a] && currentBoard[a] === currentBoard[b] && currentBoard[a] === currentBoard[c]) {
@@ -28,7 +28,7 @@ const TicTacToe = () => {
     ? "It's a Draw!" 
     : `Next Player: ${xTurn ? "X" : "O"}`;
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     // Stop if cell is filled or game is won
     if (board[index] || winner) return;
 
